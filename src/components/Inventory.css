@@ -3,6 +3,7 @@
   background-color: #f4f4f4;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .inventory-heading {
@@ -10,44 +11,67 @@
   color: #007bff; 
 }
 
-.search-container {
-  margin-bottom: 20px;
+.controls-container {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 10px;
+  margin-bottom: 10px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .search-container input {
-  padding: 10px;
+  flex: 1;
+  padding: 12px;
   width: 100%;
   max-width: 400px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 16px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.search-container input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
 }
 
 .search-field-select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 16px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.toggle-add-item-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 20px;
+.add-item-form,
+.export-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
-.toggle-add-item-button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.search-field-select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
 }
 
 .add-item-form {
-  margin-bottom: 20px;
+  margin: 0;
+}
+
+.export-buttons {
+  margin-left: 10px;
 }
 
 .add-item-form input,
@@ -82,96 +106,183 @@
 .inventory-table td {
   padding: 10px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
 }
 
 .inventory-table th {
+  background-color: #007bff;
+  color: #fff;
   cursor: pointer;
-  position: relative;
 }
 
-.inventory-table th::after {
-  content: '';
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
+.inventory-table td {
+  background-color: #fff;
 }
 
-.inventory-table th.sort-asc::after {
-  border-bottom: 5px solid #007bff;
+.status-available {
+  color: green; 
 }
 
-.inventory-table th.sort-desc::after {
-  border-top: 5px solid #007bff;
+.status-limited {
+  color: orange; 
 }
 
-.inventory-table tr:hover {
-  background-color: #f1f1f1;
+.status-out-of-stock {
+  color: red; 
+}
+
+.modify-button,
+.remove-button,
+.request-supply-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 5px; 
+}
+
+.modify-button:hover,
+.remove-button:hover,
+.request-supply-button:hover {
+  background-color: #0056b3;
 }
 
 .modify-button {
-  background-color: #ffc107;
+  background-color: #ffc107; 
   color: white;
   border: none;
   padding: 8px 15px;
   border-radius: 5px;
   margin-right: 10px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .remove-button {
-  background-color: #dc3545;
+  background-color: #dc3545; 
   color: white;
   border: none;
   padding: 8px 15px;
   border-radius: 5px;
   margin-right: 10px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .request-supply-button {
-  background-color: #17a2b8;
+  background-color: #17a2b8; 
   color: white;
   border: none;
   padding: 8px 15px;
   border-radius: 5px;
   margin-right: 10px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .modify-button:hover {
-  background-color: #e0a800;
+  background-color: #e0a800; 
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .remove-button:hover {
   background-color: #c82333;
-  transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .request-supply-button:hover {
-  background-color: #138496;
+  background-color: #138496; 
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.status-available {
-  color: #28a745; 
+.file-upload-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
 }
 
-.status-limited {
-  color: #ffc107;
+.file-upload-button:hover {
+  background-color: #0056b3;
 }
 
-.status-out-of-stock {
-  color: #dc3545; 
+.export-button {
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.export-button:hover {
+  background-color: #45a049;
+}
+
+.toggle-add-item-button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.toggle-add-item-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.supplier-dropdown {
+  display: none; 
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.supplier-dropdown p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.supplier-option {
+  display: block;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.supplier-option:hover {
+  background-color: #0056b3;
 }
 
 .sort-arrow {
