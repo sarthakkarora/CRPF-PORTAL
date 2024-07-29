@@ -1,0 +1,82 @@
+.personnel-container {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.personnel-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.personnel-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn.add {
+  background-color: #4CAF50; /* Green */
+}
+
+.btn.modify {
+  background-color: #FFC107; /* Amber */
+}
+
+.btn.remove {
+  background-color: #F44336; /* Red */
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.personnel-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.personnel-table th, .personnel-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.personnel-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.status {
+  text-transform: capitalize;
+}
+
+.status.active {
+  color: #4CAF50;
+}
+
+.status.on-leave {
+  color: #FFC107;
+}
+
+.status.inactive {
+  color: #F44336;
+}
+
+@media (max-width: 768px) {
+  .personnel-table th, .personnel-table td {
+    font-size: 14px;
+    padding: 6px;
+  }
+}

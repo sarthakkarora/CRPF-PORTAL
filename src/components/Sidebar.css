@@ -1,0 +1,33 @@
+/* Sidebar.css */
+.sidebar {
+  background-color: #343a40;
+  color: #fff;
+  padding: 1rem;
+  height: 100%;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 1rem 0;
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  font-weight: bold;
+  border-bottom: 2px solid #007bff;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    order: 1;
+  }
+}

@@ -1,0 +1,93 @@
+/* Header.css */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+  }
+
+  .user-profile {
+    margin-top: 0.5rem;
+  }
+
+  .profile-pic {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0.25rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+  }
+
+  .profile-pic {
+    width: 30px;
+    height: 30px;
+  }
+}

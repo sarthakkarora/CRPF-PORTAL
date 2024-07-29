@@ -1,0 +1,80 @@
+/* Dashboard.css */
+.dashboard-container {
+  padding: 1rem;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.dashboard-overview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.overview-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 1rem;
+  flex: 1 1 300px; /* Flex basis for responsive behavior */
+  text-align: center;
+}
+
+.overview-card h3 {
+  margin: 0 0 0.5rem;
+  color: #333;
+}
+
+.overview-card p {
+  font-size: 2rem;
+  margin: 0;
+  color: #007bff;
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .overview-card {
+    flex: 1 1 100%; /* Full width on smaller screens */
+    padding: 0.5rem;
+  }
+
+  .overview-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .overview-card p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 0.25rem;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .overview-card h3 {
+    font-size: 1rem;
+  }
+
+  .overview-card p {
+    font-size: 1.2rem;
+  }
+}
