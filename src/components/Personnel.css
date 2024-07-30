@@ -1,45 +1,58 @@
 .personnel-container {
   padding: 20px;
-  background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
 }
 
-.personnel-header {
+.controls {
+  margin-bottom: 30px; 
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.personnel-buttons {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+.search-input {
+  padding: 12px;
+  border: 2px solid #007bff;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+  width: 300px;
+  font-size: 16px;
+  outline: none;
 }
 
-.btn {
-  padding: 10px 20px;
+.search-input::placeholder {
+  color: #999;
+}
+
+.search-input:focus {
+  border-color: #0056b3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: #e6f0ff;
+}
+
+.search-input:hover {
+  border-color: #0056b3;
+  background-color: #f0f9ff;
+}
+
+.add-field-button, .export-button, .modify-button, .delete-button {
+  padding: 5px 15px;
+  background-color: #007bff;
+  margin-bottom: 5px;
+  color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  color: #fff;
+  transition: background-color 0.3s;
 }
 
-.btn.add {
-  background-color: #4CAF50; /* Green */
+.add-field-button:hover, .export-button:hover, .modify-button:hover, .delete-button:hover {
+  background-color: #0056b3;
 }
 
-.btn.modify {
-  background-color: #FFC107; /* Amber */
-}
-
-.btn.remove {
-  background-color: #F44336; /* Red */
-}
-
-.form-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+.delete-button {
+  background-color: #ff0000;
 }
 
 .personnel-table {
@@ -47,36 +60,148 @@
   border-collapse: collapse;
 }
 
-.personnel-table th, .personnel-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
 .personnel-table th {
-  background-color: #4CAF50;
+  background-color: #007bff;
   color: white;
+  padding: 12px;
+  cursor: pointer;
 }
 
-.status {
-  text-transform: capitalize;
+.personnel-table th.asc::after {
+  content: ' ▲';
+}
+
+.personnel-table th.desc::after {
+  content: ' ▼';
+}
+
+.personnel-table td {
+  padding: 12px;
+  border: 1px solid #ccc;
+}
+
+.rank.commandant {
+  color: gold;
+}
+
+.rank.deputy-commandant {
+  color: silver;
+}
+
+.rank.assistant-commandant {
+  color: bronze;
 }
 
 .status.active {
-  color: #4CAF50;
-}
-
-.status.on-leave {
-  color: #FFC107;
+  background-color: rgb(155, 227, 155);
 }
 
 .status.inactive {
-  color: #F44336;
+
+  background-color: rgb(255, 168, 168);
 }
 
+.success-rate.high-success {
+  color: green;
+}
+
+.success-rate.normal-success {
+  color: orange;
+}
+
+.success-rate.low-success {
+  color: red;
+}
+
+.personnel-form {
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.personnel-form input {
+  width: calc(100% - 24px);
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.personnel-form button[type="submit"] {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.personnel-form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .personnel-table th, .personnel-table td {
-    font-size: 14px;
-    padding: 6px;
+  .personnel-container {
+    padding: 10px;
   }
+
+  .controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .controls button {
+    margin-bottom: 10px;
+  }
+}
+
+
+.rank.commandant {
+  color: gold; /* Gold */
+}
+
+.rank.deputy-commandant {
+  color: #007BFF; /* Light Blue */
+}
+
+.rank.assistant-commandant {
+  color: #CD7F32; /* Copper */
+}
+
+.rank.inspector {
+  color: #0033A0; /* Navy Blue */
+}
+
+.rank.sub-inspector {
+  color: #009B77; /* Teal */
+}
+
+.rank.assistant-sub-inspector {
+  color: #F4A300; /* Orange */
+}
+
+.rank.head-constable {
+  color: #C8102E; /* Red */
+}
+
+.rank.constable {
+  color: #4CAF50; /* Green */
+}
+
+.rank.deputy-inspector {
+  color: #FF5722; /* Deep Orange */
+}
+
+.rank.assistant-commandant {
+  color: #FFC107; /* Amber */
 }
