@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import './Personnel.css';
+import Papa from 'papaparse';
+import * as XLSX from 'xlsx';
+
 
 const exampleData = [
-  {
+{
     serialNumber: '01',
     opName: 'Operation Rakshak',
     realName: 'Rajesh Kumar',
@@ -138,7 +141,7 @@ const Personnel = () => {
   const [filteredData, setFilteredData] = useState(exampleData);
   const [sortConfig, setSortConfig] = useState(null);
   const [formVisible, setFormVisible] = useState(false);
-  const [addFormVisible, setAddFormVisible] = useState(false); 
+  const [addFormVisible, setAddFormVisible] = useState(false);
   const [formData, setFormData] = useState({
     serialNumber: '',
     opName: '',
@@ -217,7 +220,7 @@ const Personnel = () => {
       setFilteredData([...filteredData, { ...formData, serialNumber: (filteredData.length + 1).toString().padStart(2, '0') }]);
     }
     setFormVisible(false);
-    setAddFormVisible(false); 
+    setAddFormVisible(false);
   };
 
   const handleAddField = () => {
@@ -234,39 +237,38 @@ const Personnel = () => {
       equipmentIssued: '',
       successRate: ''
     });
-    setAddFormVisible(true); // Show Add Item form
-    setFormVisible(false); // Ensure Modify form is hidden
+    setAddFormVisible(true);
+    setFormVisible(false);
   };
 
-  const getSuccessRateClass = (rate) => {
-    const value = parseInt(rate, 10);
-    if (value >= 90) return 'high-success';
-    if (value >= 80) return 'normal-success';
-    return 'low-success';
+  const getSuccessRateClass = (successRate) => {
+    if (successRate >= 90) return 'high';
+    if (successRate >= 80) return 'medium';
+    return 'low';
   };
 
-  const handleExport = (format) => {
-    const headers = [
-      'Serial Number', 'Operation Name', 'Real Name', 'Rank', 'Status', 'Missions', 'Duty Station', 
-      'Department', 'Skills', 'Equipment Issued', 'Success Rate'
-    ];
-    const rows = filteredData.map(row => [
-      row.serialNumber, row.opName, row.realName, row.rank, row.status, row.missions, row.dutyStation, 
-      row.department, row.skills, row.equipmentIssued, row.successRate
-    ]);
 
-    let csvContent = "data:text/csv;charset=utf-8," 
-      + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
-    
+const handleExport = (type) => {
+  if (type === 'csv') {
+    const csv = Papa.unparse(filteredData);
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
-    link.href = encodeURI(csvContent);
-    link.download = `personnel_data.${format}`;
+    link.href = url;
+    link.setAttribute('download', 'personnel_records.csv');
+    document.body.appendChild(link);
     link.click();
-  };
-
+    document.body.removeChild(link);
+  } else if (type === 'xls') {
+    const ws = XLSX.utils.json_to_sheet(filteredData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Personnel Records');
+    XLSX.writeFile(wb, 'personnel_records.xlsx');
+  }
+};
   return (
     <div className="personnel-container">
-     <h1 className="page-heading">Personnel Records</h1>
+      <h1 className="page-heading">Personnel Records</h1>
       <div className="controls">
         <input type="text" placeholder="Search..." onChange={handleSearch} className="search-input" />
         <button onClick={handleAddField} className="add-field-button">Add Item</button>
@@ -312,17 +314,17 @@ const Personnel = () => {
               <td>{record.serialNumber}</td>
               <td>{record.opName}</td>
               <td>{record.realName}</td>
-              <td className={`rank ${record.rank.toLowerCase().replace(/\s+/g, '-')}`}>{record.rank}</td>
-              <td className={`status ${record.status.toLowerCase().replace(/\s+/g, '-')}`}>{record.status}</td>
+              <td className={`rank-${record.rank.replace(/\s+/g, '-')}`}>{record.rank}</td>
+              <td>{record.status}</td>
               <td>{record.missions}</td>
               <td>{record.dutyStation}</td>
               <td>{record.department}</td>
               <td>{record.skills}</td>
               <td>{record.equipmentIssued}</td>
-              <td className={`success-rate ${getSuccessRateClass(record.successRate)}`}>{record.successRate}%</td>
+              <td className={getSuccessRateClass(record.successRate)}>{record.successRate}</td>
               <td>
                 <button onClick={() => handleModify(record)} className="modify-button">Modify</button>
-                <button onClick={() => handleRemove(record.serialNumber)} className="delete-button">Remove</button>
+                <button onClick={() => handleRemove(record.serialNumber)} className="delete-button">Delete</button>
               </td>
             </tr>
           ))}
