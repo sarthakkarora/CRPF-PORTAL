@@ -1,7 +1,9 @@
 .reports-container {
   font-family: Arial, sans-serif;
   padding: 20px;
+  margin-left: 40px;
   background-color: #f5f5f5;
+  margin-top: 50px;
 }
 
 h2 {
@@ -232,13 +234,15 @@ td.outcome-pending {
 }
 
 .status.pending {
-  background-color: #ccffcc;
-  color: #006600;
+  color: #5fb55f;
+  font-weight: bold;
+  
 }
 
 .status.reviewed {
-  background-color: #ffff99;
-  color: #666;
+color: #f6f66b;
+font-weight: bold;
+  
 }
 
 .view-link {
@@ -249,3 +253,57 @@ td.outcome-pending {
 .view-link:hover {
   text-decoration: underline;
 }
+.edit-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.edit-button:hover {
+  background-color: #45a049;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
+
+.security-row {
+  background-color: #f5c75c;
+}
+
+.emergency-row {
+  background-color: #e6583f; 
+}
+
+.routine-row {
+  background-color: #e0e0e0; 
+}
+
+.outcome.resolved {
+  color: #0400d9; 
+  font-weight: bold; 
+}
+
