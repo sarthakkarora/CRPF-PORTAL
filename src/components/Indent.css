@@ -1,0 +1,260 @@
+.indent-resource-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+.indent-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875em;
+}
+
+.submit-btn {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.filter-and-sort {
+  margin: 20px 0;
+}
+
+.filter, .search, .sort {
+  margin-bottom: 10px;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.indents-list {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping of items */
+  gap: 20px; /* Space between items */
+  margin-top: 20px;
+}
+
+.indents-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%; /* Full width of parent container */
+}
+
+.indent-item {
+  flex: 1 1 calc(50% - 20px); /* 50% width minus gap */
+  box-sizing: border-box; /* Includes padding and border in the width */
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; 
+}
+
+.indent-item div {
+  margin-bottom: 8px;
+}
+
+.indent-item strong {
+  color: #333;
+}
+
+.indent-item .details-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875em;
+}
+
+.indent-item .details-btn:hover {
+  background-color: #218838;
+}
+
+.indent-item .actions {
+  margin-top: 10px;
+}
+
+.indent-item .approve-btn, 
+.indent-item .reject-btn {
+  background-color: #17a2b8;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875em;
+  margin-right: 8px;
+}
+
+.indent-item .approve-btn:hover {
+  background-color: #138496;
+}
+
+.indent-item .reject-btn {
+  background-color: #dc3545;
+}
+
+.indent-item .reject-btn:hover {
+  background-color: #c82333;
+}
+
+.detail-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.notifications {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgb(255, 153, 153);
+  color: rgb(0, 191, 255);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.pagination-controls .prev-btn, 
+.pagination-controls .next-btn {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875em;
+  text-align: center;
+  margin-left: 25px;
+  margin-right: 20px;
+}
+
+.pagination-controls .prev-btn:hover, 
+.pagination-controls .next-btn:hover {
+  background-color: #0056b3;
+}
+
+.pagination-controls .prev-btn:disabled, 
+.pagination-controls .next-btn:disabled {
+  background-color: #a70000;
+  cursor: not-allowed;
+}
+
+
+.approve-btn {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 4px;
+}
+
+.reject-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 10px;
+}
+
+.view-btn {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 10px;
+}
+
+.undo-btn {
+  background-color: yellow;
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+button:focus:not(:disabled) {
+  outline: 2px solid #333;
+}
