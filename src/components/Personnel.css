@@ -1,58 +1,75 @@
 .personnel-container {
   padding: 20px;
-  font-family: Arial, sans-serif;
+  margin-left: 40px;
+  margin-top: 50px;
 }
 
 .controls {
-  margin-bottom: 30px; 
+  margin-bottom: 20px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
 .search-input {
-  padding: 12px;
-  border: 2px solid #007bff;
+  padding: 8px;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
   width: 300px;
-  font-size: 16px;
-  outline: none;
 }
 
-.search-input::placeholder {
-  color: #999;
-}
-
-.search-input:focus {
-  border-color: #0056b3;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  background-color: #e6f0ff;
-}
-
-.search-input:hover {
-  border-color: #0056b3;
-  background-color: #f0f9ff;
-}
-
-.add-field-button, .export-button, .modify-button, .delete-button {
-  padding: 5px 15px;
-  background-color: #007bff;
-  margin-bottom: 5px;
-  color: white;
+.add-field-button, .export-button, .add-report-button {
+  padding: 8px 16px;
   border: none;
   border-radius: 4px;
+  background-color: #007bff; /* Blue */
+  color: white;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.add-field-button:hover, .export-button:hover, .modify-button:hover, .delete-button:hover {
-  background-color: #0056b3;
+.add-field-button:hover, .export-button:hover, .add-report-button:hover {
+  background-color: #0056b3; /* Darker Blue */
 }
 
-.delete-button {
-  background-color: #ff0000;
+.personnel-form, .report-form {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.personnel-form input, .personnel-form textarea, .report-form input, .report-form textarea {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.save-button, .cancel-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.save-button {
+  background-color: #28a745; /* Green */
+}
+
+.cancel-button {
+  background-color: #dc3545; /* Red */
+}
+
+.save-button:hover {
+  background-color: #218838; /* Darker Green */
+}
+
+.cancel-button:hover {
+  background-color: #c82333; /* Darker Red */
 }
 
 .personnel-table {
@@ -60,148 +77,82 @@
   border-collapse: collapse;
 }
 
-.personnel-table th {
-  background-color: #007bff;
-  color: white;
-  padding: 12px;
-  cursor: pointer;
-}
-
-.personnel-table th.asc::after {
-  content: ' ▲';
-}
-
-.personnel-table th.desc::after {
-  content: ' ▼';
-}
-
-.personnel-table td {
-  padding: 12px;
-  border: 1px solid #ccc;
-}
-
-.rank.commandant {
-  color: gold;
-}
-
-.rank.deputy-commandant {
-  color: silver;
-}
-
-.rank.assistant-commandant {
-  color: bronze;
-}
-
-.status.active {
-  background-color: rgb(155, 227, 155);
-}
-
-.status.inactive {
-
-  background-color: rgb(255, 168, 168);
-}
-
-.success-rate.high-success {
-  color: green;
-}
-
-.success-rate.normal-success {
-  color: orange;
-}
-
-.success-rate.low-success {
-  color: red;
-}
-
-.personnel-form {
-  margin-top: 30px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.personnel-form input {
-  width: calc(100% - 24px);
+.personnel-table th, .personnel-table td {
   padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  text-align: left;
 }
 
-.personnel-form button[type="submit"] {
-  padding: 10px 15px;
-  background-color: #007bff;
+.personnel-table th {
+  background-color: #007bff; /* Blue */
   color: white;
+}
+
+.rank, .status {
+  text-transform: capitalize;
+}
+
+.rank.officer {
+  color: #0056b3; /* Dark Blue */
+}
+
+.rank.soldier {
+  color: #dc3545; /* Red */
+}
+
+.status.available {
+  color: #28a745; /* Green */
+}
+
+.status.low-stock {
+  color: #ffc107; /* Yellow */
+}
+
+.status.out-of-stock {
+  color: #dc3545; /* Red */
+}
+
+.success-rate {
+  text-align: center;
+}
+
+.success-rate.high {
+  color: #28a745; /* Green */
+}
+
+.success-rate.medium {
+  color: #ffc107; /* Yellow */
+}
+
+.success-rate.low {
+  color: #dc3545; /* Red */
+}
+
+.modify-button, .delete-button {
+  padding: 6px 12px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.personnel-form button[type="submit"]:hover {
-  background-color: #0056b3;
+.modify-button {
+  background-color: #007bff; /* Blue */
+  color: white;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .personnel-container {
-    padding: 10px;
-  }
-
-  .controls {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .search-input {
-    width: 100%;
-  }
-
-  .controls button {
-    margin-bottom: 10px;
-  }
+.delete-button {
+  background-color: #dc3545; /* Red */
+  color: white;
 }
 
-
-.rank.commandant {
-  color: gold; /* Gold */
+.modify-button:hover {
+  background-color: #0056b3; /* Darker Blue */
 }
 
-.rank.deputy-commandant {
-  color: #007BFF; /* Light Blue */
+.delete-button:hover {
+  background-color: #c82333; /* Darker Red */
 }
 
-.rank.assistant-commandant {
-  color: #CD7F32; /* Copper */
-}
-
-.rank.inspector {
-  color: #0033A0; /* Navy Blue */
-}
-
-.rank.sub-inspector {
-  color: #009B77; /* Teal */
-}
-
-.rank.assistant-sub-inspector {
-  color: #F4A300; /* Orange */
-}
-
-.rank.head-constable {
-  color: #C8102E; /* Red */
-}
-
-.rank.constable {
-  color: #4CAF50; /* Green */
-}
-
-.rank.deputy-inspector {
-  color: #FF5722; /* Deep Orange */
-}
-
-.rank.assistant-commandant {
-  color: #FFC107; /* Amber */
+.mark {
+  background-color: yellow;
 }
