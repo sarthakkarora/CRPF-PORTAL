@@ -1,6 +1,8 @@
-/* Dashboard.css */
+
 .dashboard-container {
   padding: 1rem;
+  margin-top: 50px;
+  margin-left: 40px;
   min-height: 100vh;
   background-color: #f4f4f4;
 }
@@ -23,7 +25,7 @@ h1 {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 1rem;
-  flex: 1 1 300px; /* Flex basis for responsive behavior */
+  flex: 1 1 300px; 
   text-align: center;
 }
 
@@ -48,7 +50,7 @@ h1 {
   }
 
   .overview-card {
-    flex: 1 1 100%; /* Full width on smaller screens */
+    flex: 1 1 100%;
     padding: 0.5rem;
   }
 
