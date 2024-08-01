@@ -384,7 +384,7 @@ const Reports = () => {
 
   return (
     <div className="reports-container">
-      <h2>Reports</h2>
+      <h1>Reports</h1>
       <div className="search-export-container">
         <input
           type="text"
@@ -490,8 +490,13 @@ const ReportForm = ({ report, handleChange, handleSubmit, handleCancel, isEdit }
 };
 
 const ReportRow = ({ report, handleEdit, handleDelete }) => {
+
+  const rowClass = report.type.toLowerCase() === 'security' ? 'security-row' : 
+                   report.type.toLowerCase() === 'emergency' ? 'emergency-row' :
+                   report.type.toLowerCase() === 'routine' ? 'routine-row' : '';
+
   return (
-    <tr>
+    <tr className={rowClass}> {}
       <td>{report.incidentID}</td>
       <td>{report.severityDate}</td>
       <td className={`status ${report.status.toLowerCase()}`}>{report.status}</td>
@@ -499,7 +504,7 @@ const ReportRow = ({ report, handleEdit, handleDelete }) => {
       <td>{report.location}</td>
       <td>{report.reportedBy}</td>
       <td>{report.actionTaken}</td>
-      <td>{report.outcome}</td>
+      <td className={`outcome ${report.outcome.toLowerCase()}`}>{report.outcome}</td>
       <td>{report.operationName}</td>
       <td>{report.operationalUnit}</td>
       <td>{report.personnelInvolved}</td>
@@ -519,5 +524,6 @@ const ReportRow = ({ report, handleEdit, handleDelete }) => {
     </tr>
   );
 };
+
 
 export default Reports;
