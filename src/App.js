@@ -9,6 +9,10 @@ import Login from './components/Login';
 import Personnel from './components/Personnel';
 import Reports from './components/Reports';
 import Alerts from './components/Alerts';
+import IndentResource from './components/Indent';
+import MissionProfile from './components/MissionProfile';
+import Medical from './components/Medical'; 
+import FundRequestPage from './components/FundRequestPage'; 
 
 const App = () => {
   return (
@@ -25,6 +29,10 @@ const App = () => {
               <Route path="/personnel" element={<Personnel />} />
               <Route path="/reports" element={<Reports />} />
               <Route path="/alerts" element={<Alerts />} />
+              <Route path="/indent" element={<IndentResource />} />
+              <Route path="/mission-profile" element={<MissionProfile />} />
+              <Route path="/medical" element={<Medical />} />
+              <Route path="/fund-request" element={<FundRequestPage />} />
               <Route path="/" element={<Dashboard />} />
             </Routes>
           </div>
