@@ -1,0 +1,64 @@
+.fund-request-page {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  
+  .steps {
+    margin-bottom: 20px;
+  }
+  
+  .step-content {
+    margin-bottom: 20px;
+  }
+  
+  .budget-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 8px;
+  }
+  
+  .actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  /* CSS for Past Fund Records Section */
+.past-records {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    background-color: #fafafa;
+  }
+  
+  .past-records h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+   /* Style for each past record */
+   .past-records ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .past-records li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
