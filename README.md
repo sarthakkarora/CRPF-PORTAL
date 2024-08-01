@@ -134,4 +134,3 @@ The CRPF Admin Portal is a robust web application designed to streamline adminis
 ## License
 
 - This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-```
