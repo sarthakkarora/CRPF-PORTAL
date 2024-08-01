@@ -1,0 +1,100 @@
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.MuiBox-root {
+  padding: 16px;
+  margin-left: 30px;
+}
+
+/* Tabs Styles */
+.MuiTabs-root {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.MuiTab-root {
+  text-transform: none;
+}
+
+/* Table Styles */
+.MuiTable-root {
+  min-width: 650px;
+}
+
+.MuiTableHead-root {
+  background-color: #f5f5f5;
+}
+
+.MuiTableCell-head {
+  font-weight: bold;
+  color: #333;
+}
+
+.MuiTableCell-body {
+  color: #666;
+}
+
+/* Buttons Styles */
+.MuiButton-containedPrimary {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.MuiButton-containedPrimary:hover {
+  background-color: #303f9f;
+}
+
+.MuiButton-containedSecondary {
+  background-color: #f50057;
+  color: white;
+}
+
+.MuiButton-containedSecondary:hover {
+  background-color: #c51162;
+}
+
+.MuiButton-containedSuccess {
+  background-color: #4caf50;
+  color: white;
+}
+
+.MuiButton-containedSuccess:hover {
+  background-color: #388e3c;
+}
+
+.MuiButton-contained {
+  border-radius: 4px;
+}
+
+/* TextField Styles */
+.MuiTextField-root {
+  width: 300px;
+}
+
+.MuiInputBase-root {
+  padding-right: 8px;
+}
+
+/* Dialog Styles */
+.MuiDialog-paper {
+  padding: 16px;
+}
+
+.MuiDialogTitle-root {
+  background-color: #3f51b5;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Snackbar Styles */
+.MuiSnackbarContent-root {
+  background-color: #4caf50;
+  color: white;
+}
+
+/* TablePagination Styles */
+.MuiTablePagination-root {
+  padding: 16px;
+}
