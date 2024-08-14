@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import Inventory from './components/Inventory';
@@ -18,7 +17,6 @@ const App = () => {
   return (
     <Router>
       <div className="app-container">
-        <Header />
         <div className="main-content">
           <Sidebar />
           <div className="content">
