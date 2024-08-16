@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/CRPF-ADMIN-PAGE/static/css/main.b99eafdb.css",
+    "main.js": "/CRPF-ADMIN-PAGE/static/js/main.5957193e.js",
+    "static/js/303.1f6f4b0c.chunk.js": "/CRPF-ADMIN-PAGE/static/js/303.1f6f4b0c.chunk.js",
+    "static/js/262.83dbc194.chunk.js": "/CRPF-ADMIN-PAGE/static/js/262.83dbc194.chunk.js",
+    "static/js/700.618a0f5f.chunk.js": "/CRPF-ADMIN-PAGE/static/js/700.618a0f5f.chunk.js",
+    "index.html": "/CRPF-ADMIN-PAGE/index.html",
+    "main.b99eafdb.css.map": "/CRPF-ADMIN-PAGE/static/css/main.b99eafdb.css.map",
+    "main.5957193e.js.map": "/CRPF-ADMIN-PAGE/static/js/main.5957193e.js.map",
+    "303.1f6f4b0c.chunk.js.map": "/CRPF-ADMIN-PAGE/static/js/303.1f6f4b0c.chunk.js.map",
+    "262.83dbc194.chunk.js.map": "/CRPF-ADMIN-PAGE/static/js/262.83dbc194.chunk.js.map",
+    "700.618a0f5f.chunk.js.map": "/CRPF-ADMIN-PAGE/static/js/700.618a0f5f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b99eafdb.css",
+    "static/js/main.5957193e.js"
+  ]
+}
