@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/CRPF-ADMIN-PAGE/static/css/main.be665fed.css",
-    "main.js": "/CRPF-ADMIN-PAGE/static/js/main.c339501d.js",
-    "static/js/204.a1d3cc92.chunk.js": "/CRPF-ADMIN-PAGE/static/js/204.a1d3cc92.chunk.js",
-    "static/js/848.0ebf4112.chunk.js": "/CRPF-ADMIN-PAGE/static/js/848.0ebf4112.chunk.js",
-    "static/js/633.0d696edd.chunk.js": "/CRPF-ADMIN-PAGE/static/js/633.0d696edd.chunk.js",
-    "index.html": "/CRPF-ADMIN-PAGE/index.html",
-    "main.be665fed.css.map": "/CRPF-ADMIN-PAGE/static/css/main.be665fed.css.map",
-    "main.c339501d.js.map": "/CRPF-ADMIN-PAGE/static/js/main.c339501d.js.map",
-    "204.a1d3cc92.chunk.js.map": "/CRPF-ADMIN-PAGE/static/js/204.a1d3cc92.chunk.js.map",
-    "848.0ebf4112.chunk.js.map": "/CRPF-ADMIN-PAGE/static/js/848.0ebf4112.chunk.js.map",
-    "633.0d696edd.chunk.js.map": "/CRPF-ADMIN-PAGE/static/js/633.0d696edd.chunk.js.map"
+    "main.css": "/dashboard/static/css/main.be665fed.css",
+    "main.js": "/dashboard/static/js/main.987ce70f.js",
+    "static/js/204.a1d3cc92.chunk.js": "/dashboard/static/js/204.a1d3cc92.chunk.js",
+    "static/js/848.0ebf4112.chunk.js": "/dashboard/static/js/848.0ebf4112.chunk.js",
+    "static/js/633.0d696edd.chunk.js": "/dashboard/static/js/633.0d696edd.chunk.js",
+    "index.html": "/dashboard/index.html",
+    "main.be665fed.css.map": "/dashboard/static/css/main.be665fed.css.map",
+    "main.987ce70f.js.map": "/dashboard/static/js/main.987ce70f.js.map",
+    "204.a1d3cc92.chunk.js.map": "/dashboard/static/js/204.a1d3cc92.chunk.js.map",
+    "848.0ebf4112.chunk.js.map": "/dashboard/static/js/848.0ebf4112.chunk.js.map",
+    "633.0d696edd.chunk.js.map": "/dashboard/static/js/633.0d696edd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.be665fed.css",
-    "static/js/main.c339501d.js"
+    "static/js/main.987ce70f.js"
   ]
 }
