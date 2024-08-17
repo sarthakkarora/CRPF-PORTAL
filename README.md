@@ -5,7 +5,9 @@
 The CRPF Admin Portal is a robust web application designed to streamline administrative tasks and enhance operational efficiency for the Central Reserve Police Force (CRPF). This portal integrates a wide array of functionalities required for effective management, including real-time updates, resource allocation, and secure communication. It supports both internet and intranet access, ensuring secure and authorized usage.
 
 ## Demo Link
-https://drive.google.com/file/d/1LaAocpycmGmo5ZcLsM39DUvkVwQ6YKeY/view?usp=sharing
+
+https://drive.google.com/file/d/1imhhU6YtCO_Ckkg4ERgbFahqwa06fiPt/view?usp=sharing
+
 ## Key Highlights
 
 - **Real-Time Intelligence:** Stay ahead with instant updates and alerts, ensuring timely decision-making and responsiveness.
