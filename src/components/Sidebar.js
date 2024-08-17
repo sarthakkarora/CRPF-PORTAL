@@ -10,15 +10,11 @@ import {
   FaUserCircle,
   FaSignOutAlt,
   FaCog,
-  FaMapMarkedAlt,
   FaComments,
-  FaClipboardList,
-  FaMedkit,
   FaHandHoldingUsd,
-  FaShieldAlt,
+  FaMedkit,
   FaTruck,
-  FaLock,
-  FaUserCog,
+  FaClipboardList
 } from 'react-icons/fa';
 import './Sidebar.css';
 
@@ -32,8 +28,8 @@ const Sidebar = () => {
 
   useEffect(() => {
     setUser({
-      name: 'John Doe',
-      profilePicture: 'https://via.placeholder.com/50'
+      name: 'Major Shreejesh',
+      profilePicture: 'https://crpf.gov.in/Upload/Employees/dgcrpf-832.jpg'
     });
 
     const handleMouseMove = (e) => {
@@ -70,7 +66,7 @@ const Sidebar = () => {
         <button className="toggle-btn" onClick={() => setCollapsed(!collapsed)} aria-label="Toggle Sidebar">
           {collapsed ? <FaChevronRight /> : <FaChevronLeft />}
         </button>
-        {!collapsed && <div className="sidebar-title">Admin Panel</div>}
+        {!collapsed && <div className="sidebar-title">CRPF Panel</div>}
       </div>
       <div className="sidebar-links">
         <a href="http://localhost:5001/dashboard" className="sidebar-link" aria-label="Dashboard">
@@ -89,11 +85,11 @@ const Sidebar = () => {
           <FaMedkit className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Medical Support</span>}
         </a>
-        <a href="http://localhost:5001/chat" className="sidebar-link" aria-label="Field Chat">
+        <a href="http://localhost:5001/chat" className="sidebar-link" aria-label="Chat">
           <FaComments className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Field Chat</span>}
         </a>
-        <a href="/fund-request" className="sidebar-link" aria-label="Fund Request">
+        <a href="http://localhost:5001/fund-request" className="sidebar-link" aria-label="Fund Request">
           <FaHandHoldingUsd className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Fund Request</span>}
         </a>
@@ -105,7 +101,6 @@ const Sidebar = () => {
           <FaBox className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Inventory Management</span>}
         </a>
-       
         <a href="http://localhost:5001/reports" className="sidebar-link" aria-label="Reports">
           <FaFileAlt className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Reports</span>}
@@ -122,15 +117,20 @@ const Sidebar = () => {
         <div className="profile-section" onClick={() => setShowDropdown(!showDropdown)} aria-label="Profile">
           {user && (
             <>
-              <img src={user.profilePicture} alt="Profile" className="profile-picture" />
+              <img 
+                src={user.profilePicture} 
+                alt="Profile" 
+                className="profile-picture" 
+                onError={(e) => e.target.src = 'https://via.placeholder.com/50'} // Fallback image
+              />
               {!collapsed && <span className="profile-text">{user.name}</span>}
             </>
           )}
           {showDropdown && (
             <div className="dropdown-menu">
-              <a href="http://localhost:5001/profile" className="dropdown-item" aria-label="Profile"><FaUserCircle /> Profile</a>
-              <a href="http://localhost:5001/settings" className="dropdown-item" aria-label="Settings"><FaCog /> Settings</a>
-              <a href="http://localhost:5001/logout" className="dropdown-item" aria-label="Logout"><FaSignOutAlt /> Logout</a>
+              <a href="#" className="dropdown-item" aria-label="Profile"><FaUserCircle /> Profile</a>
+              <a href="#" className="dropdown-item" aria-label="Settings"><FaCog /> Settings</a>
+              <a href="#" className="dropdown-item" aria-label="Logout"><FaSignOutAlt /> Logout</a>
             </div>
           )}
         </div>

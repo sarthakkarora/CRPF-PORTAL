@@ -1,7 +1,7 @@
 .personnel-container {
-  padding: 20px;
-  margin-left: 40px;
-  margin-top: 50px;
+  padding: 5px;
+  margin-left: 60px;
+  
 }
 
 .controls {
@@ -136,8 +136,9 @@
 }
 
 .modify-button {
-  background-color: #007bff; /* Blue */
-  color: white;
+  background-color: #f39c12; /* Blue */
+  color: rgb(0, 0, 0);
+  margin-bottom: 10px;
 }
 
 .delete-button {

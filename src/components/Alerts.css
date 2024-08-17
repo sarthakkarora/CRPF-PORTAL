@@ -1,11 +1,11 @@
 .alerts-container {
-  padding: 1rem;
+  padding: 5px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   margin: 1rem auto;
   max-width: 1000px;
-  margin-top: 60px;
+
   
 }
 
@@ -128,4 +128,12 @@ h2 {
 .alerts-controls select option {
   background-color: #fff;
   color: #000;
+}
+
+h1 {
+  color: #0a3d62;
+  margin-bottom: 20px;
+  font-weight: bold;
+  justify-content: center;
+  text-align: center;
 }

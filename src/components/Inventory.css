@@ -1,11 +1,10 @@
 .inventory-container {
-  padding: 20px;
+  padding: 5px;
   background-color: #f4f4f4;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  margin-left: 40px;
-  margin-top: 50px;
+  margin-left: 70px;
+
 }
 
 .inventory-heading {

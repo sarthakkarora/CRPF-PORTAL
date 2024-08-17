@@ -1,100 +1,168 @@
-
-body {
-  font-family: Arial, sans-serif;
+/* General Container */
+.medical-records-container {
+  max-width: 1400px;
+  margin: 5px auto;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  margin-left: 100px;
 }
 
-.MuiBox-root {
-  padding: 16px;
-  margin-left: 30px;
+/* Page Heading */
+.medical-records-container h2 {
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
 }
 
-/* Tabs Styles */
-.MuiTabs-root {
-  border-bottom: 1px solid #e0e0e0;
+/* Action Buttons and Search Bar */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
 }
 
-.MuiTab-root {
-  text-transform: none;
+.actions button, .search-input {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Add New Record and Edit Buttons */
+.actions button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.actions button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.actions button:active {
+  background-color: #003d7a;
+  transform: translateY(0);
+}
+
+/* Convert to CSV and Excel Buttons */
+.actions button:nth-of-type(2) {
+  background-color: #28a745;
+}
+
+.actions button:nth-of-type(2):hover {
+  background-color: #218838;
+}
+
+.actions button:nth-of-type(2):active {
+  background-color: #1e7e34;
+}
+
+/* Search Input */
+.search-input {
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Form Styles */
+.form {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form h3 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.form input {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 /* Table Styles */
-.MuiTable-root {
-  min-width: 650px;
+.medical-records-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-.MuiTableHead-root {
-  background-color: #f5f5f5;
-}
-
-.MuiTableCell-head {
-  font-weight: bold;
-  color: #333;
-}
-
-.MuiTableCell-body {
-  color: #666;
-}
-
-/* Buttons Styles */
-.MuiButton-containedPrimary {
-  background-color: #3f51b5;
-  color: white;
-}
-
-.MuiButton-containedPrimary:hover {
-  background-color: #303f9f;
-}
-
-.MuiButton-containedSecondary {
-  background-color: #f50057;
-  color: white;
-}
-
-.MuiButton-containedSecondary:hover {
-  background-color: #c51162;
-}
-
-.MuiButton-containedSuccess {
-  background-color: #4caf50;
-  color: white;
-}
-
-.MuiButton-containedSuccess:hover {
-  background-color: #388e3c;
-}
-
-.MuiButton-contained {
-  border-radius: 4px;
-}
-
-/* TextField Styles */
-.MuiTextField-root {
-  width: 300px;
-}
-
-.MuiInputBase-root {
-  padding-right: 8px;
-}
-
-/* Dialog Styles */
-.MuiDialog-paper {
-  padding: 16px;
-}
-
-.MuiDialogTitle-root {
-  background-color: #3f51b5;
-  color: white;
+.medical-records-table th, .medical-records-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
   text-align: center;
+}
+
+.medical-records-table th {
+  background-color: #f0f0f0;
+  color: #333;
   font-weight: bold;
 }
 
-/* Snackbar Styles */
-.MuiSnackbarContent-root {
-  background-color: #4caf50;
-  color: white;
+.medical-records-table tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
-/* TablePagination Styles */
-.MuiTablePagination-root {
-  padding: 16px;
+.medical-records-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.medical-records-table button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: #000000;
+  margin: 10px;
+  background-color: #ffcc26;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.medical-records-table button:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+.medical-records-table button:active {
+  background-color: #bd2130;
+  transform: translateY(0);
 }

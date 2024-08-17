@@ -1,367 +1,229 @@
-import React, { useState, useEffect } from 'react';
-import { DatePicker, notification, Upload, Button, Input, Select, Typography, Form, Divider, Steps, Progress } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
-import moment from 'moment';
-import 'antd/dist/reset.css';
+import React, { useState } from 'react';
 import './FundRequestPage.css';
 
-const { TextArea } = Input;
-const { Option } = Select;
-const { Step } = Steps;
+// Custom Hook for Form Handling
+const useForm = (initialValues, validate) => {
+    const [values, setValues] = useState(initialValues);
+    const [errors, setErrors] = useState({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-const FundRequestPage = () => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [formData, setFormData] = useState({
-    requesterName: '',
-    designation: '',
-    contactInfo: '',
-    purpose: '',
-    amount: '',
-    fundType: '',
-    dateRequiredBy: '',
-    documents: [],
-    budgetBreakdown: [],
-    supervisor: '',
-    comments: '',
-  });
-  const [submittedRecords, setSubmittedRecords] = useState([]);
-  const [pastRecords, setPastRecords] = useState([]);
-  const [errors, setErrors] = useState({});
-  const [isSaving, setIsSaving] = useState(false);
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setValues({
+            ...values,
+            [name]: value,
+        });
+    };
 
-  useEffect(() => {
-    const savedData = localStorage.getItem('fundRequestForm');
-    if (savedData) {
-      setFormData(JSON.parse(savedData));
-    }
-    const savedRecords = localStorage.getItem('submittedRecords');
-    if (savedRecords) {
-      setPastRecords(JSON.parse(savedRecords));
-    }
-  }, []);
+    const handleAddItem = () => {
+        setValues({
+            ...values,
+            items: [...values.items, { name: '', quantity: 1, unitPrice: '' }],
+        });
+    };
 
-  useEffect(() => {
-    localStorage.setItem('fundRequestForm', JSON.stringify(formData));
-  }, [formData]);
+    const handleRemoveItem = (index) => {
+        const updatedItems = values.items.filter((_, i) => i !== index);
+        setValues({
+            ...values,
+            items: updatedItems,
+        });
+    };
 
-  useEffect(() => {
-    localStorage.setItem('submittedRecords', JSON.stringify(pastRecords));
-  }, [pastRecords]);
+    const handleItemChange = (index, e) => {
+        const { name, value } = e.target;
+        const updatedItems = values.items.map((item, i) =>
+            i === index ? { ...item, [name]: value } : item
+        );
+        setValues({
+            ...values,
+            items: updatedItems,
+        });
+    };
 
-  const validateStep = () => {
-    let isValid = true;
-    let newErrors = {};
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        const validationErrors = validate(values);
+        if (Object.keys(validationErrors).length === 0) {
+            // Simulate successful submission
+            setTimeout(() => {
+                console.log('Form Submitted:', values);
+                setValues(initialValues);
+                setErrors({});
+                setIsSubmitting(false);
+                alert('Request submitted successfully!');
+            }, 1000);
+        } else {
+            setErrors(validationErrors);
+            setIsSubmitting(false);
+        }
+    };
 
-    if (currentStep === 0) {
-      if (!formData.requesterName) {
-        newErrors.requesterName = 'Full Name is required.';
-        isValid = false;
-      }
-      if (!formData.designation) {
-        newErrors.designation = 'Designation is required.';
-        isValid = false;
-      }
-      if (!formData.contactInfo) {
-        newErrors.contactInfo = 'Contact Information is required.';
-        isValid = false;
-      }
-      if (!formData.purpose) {
-        newErrors.purpose = 'Purpose of Fund is required.';
-        isValid = false;
-      }
-      if (!formData.amount) {
-        newErrors.amount = 'Amount Requested is required.';
-        isValid = false;
-      }
-      if (!formData.fundType) {
-        newErrors.fundType = 'Fund Type is required.';
-        isValid = false;
-      }
-      if (!formData.dateRequiredBy) {
-        newErrors.dateRequiredBy = 'Date Required By is required.';
-        isValid = false;
-      }
-    } else if (currentStep === 1) {
-      if (formData.budgetBreakdown.some(item => !item.item || !item.cost)) {
-        newErrors.budgetBreakdown = 'Each budget item must have a name and cost.';
-        isValid = false;
-      }
-    }
-
-    setErrors(newErrors);
-    return isValid;
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleDateChange = (date, dateString) => {
-    setFormData({
-      ...formData,
-      dateRequiredBy: dateString,
-    });
-  };
-
-  const handleFileChange = (info) => {
-    if (info.fileList.length <= 5) {
-      setFormData({
-        ...formData,
-        documents: info.fileList,
-      });
-    } else {
-      notification.error({
-        message: 'File Limit Exceeded',
-        description: 'You can only upload up to 5 files.',
-      });
-    }
-  };
-
-  const handleSubmit = async () => {
-    if (!validateStep()) return;
-
-    setPastRecords([...pastRecords, formData]);
-    setFormData({
-      requesterName: '',
-      designation: '',
-      contactInfo: '',
-      purpose: '',
-      amount: '',
-      fundType: '',
-      dateRequiredBy: '',
-      documents: [],
-      budgetBreakdown: [],
-      supervisor: '',
-      comments: '',
-    });
-
-    notification.success({
-      message: 'Form Submitted',
-      description: 'Your fund request has been successfully submitted.',
-    });
-  };
-
-  const handleAddBudgetItem = () => {
-    setFormData({
-      ...formData,
-      budgetBreakdown: [...formData.budgetBreakdown, { item: '', cost: '' }],
-    });
-  };
-
-  const handleBudgetChange = (index, e) => {
-    const newBudgetBreakdown = formData.budgetBreakdown.slice();
-    newBudgetBreakdown[index][e.target.name] = e.target.value;
-    setFormData({
-      ...formData,
-      budgetBreakdown: newBudgetBreakdown,
-    });
-  };
-
-  const handleRemoveBudgetItem = (index) => {
-    const newBudgetBreakdown = formData.budgetBreakdown.filter((_, i) => i !== index);
-    setFormData({
-      ...formData,
-      budgetBreakdown: newBudgetBreakdown,
-    });
-  };
-
-  const nextStep = () => {
-    if (validateStep()) {
-      setCurrentStep(currentStep + 1);
-    }
-  };
-
-  const prevStep = () => {
-    setCurrentStep(currentStep - 1);
-  };
-
-  const saveForLater = () => {
-    setIsSaving(true);
-    notification.success({
-      message: 'Progress Saved',
-      description: 'Your progress has been saved. You can resume later.',
-    });
-    setIsSaving(false);
-  };
-
-  const progress = (currentStep + 1) * (100 / 3);
-
-  return (
-    <div className="fund-request-page">
-      <h1 level={1}>CRPF Fund Request Page</h1>
-      <Progress percent={progress} />
-      <Steps current={currentStep} className="steps">
-        <Step title="Basic Information" />
-        <Step title="Budget Breakdown" />
-        <Step title="Documents & Submission" />
-      </Steps>
-
-      <Form layout="vertical" onFinish={handleSubmit}>
-        {currentStep === 0 && (
-          <div className="step-content">
-            <Form.Item label="Full Name" validateStatus={errors.requesterName ? 'error' : ''} help={errors.requesterName}>
-              <Input
-                name="requesterName"
-                value={formData.requesterName}
-                onChange={handleChange}
-                placeholder="Enter your full name"
-              />
-            </Form.Item>
-            <Form.Item label="Designation" validateStatus={errors.designation ? 'error' : ''} help={errors.designation}>
-              <Input
-                name="designation"
-                value={formData.designation}
-                onChange={handleChange}
-                placeholder="Enter your designation"
-              />
-            </Form.Item>
-            <Form.Item label="Contact Information" validateStatus={errors.contactInfo ? 'error' : ''} help={errors.contactInfo}>
-              <Input
-                name="contactInfo"
-                value={formData.contactInfo}
-                onChange={handleChange}
-                placeholder="Enter your contact information"
-              />
-            </Form.Item>
-            <Form.Item label="Purpose of Fund" validateStatus={errors.purpose ? 'error' : ''} help={errors.purpose}>
-              <TextArea
-                name="purpose"
-                value={formData.purpose}
-                onChange={handleChange}
-                placeholder="Describe the purpose of the fund request"
-              />
-            </Form.Item>
-            <Form.Item label="Amount Requested" validateStatus={errors.amount ? 'error' : ''} help={errors.amount}>
-              <Input
-                name="amount"
-                value={formData.amount}
-                onChange={handleChange}
-                placeholder="Enter the amount requested"
-                type="number"
-              />
-            </Form.Item>
-            <Form.Item label="Fund Type" validateStatus={errors.fundType ? 'error' : ''} help={errors.fundType}>
-              <Select
-                name="fundType"
-                value={formData.fundType}
-                onChange={(value) => setFormData({ ...formData, fundType: value })}
-                placeholder="Select fund type"
-              >
-                <Option value="Operational">Operational</Option>
-                <Option value="Emergency">Emergency</Option>
-                <Option value="Development">Development</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="Date Required By" validateStatus={errors.dateRequiredBy ? 'error' : ''} help={errors.dateRequiredBy}>
-              <DatePicker
-                name="dateRequiredBy"
-                value={formData.dateRequiredBy ? moment(formData.dateRequiredBy) : null}
-                onChange={handleDateChange}
-                placeholder="Select the date required by"
-              />
-            </Form.Item>
-          </div>
-        )}
-        {currentStep === 1 && (
-          <div className="step-content">
-            <Button type="dashed" onClick={handleAddBudgetItem}>
-              Add Budget Item
-            </Button>
-            {formData.budgetBreakdown.map((item, index) => (
-              <div key={index} className="budget-item">
-                <Form.Item label="Item" validateStatus={errors.budgetBreakdown ? 'error' : ''} help={errors.budgetBreakdown}>
-                  <Input
-                    name="item"
-                    value={item.item}
-                    onChange={(e) => handleBudgetChange(index, e)}
-                    placeholder="Enter item name"
-                  />
-                </Form.Item>
-                <Form.Item label="Cost" validateStatus={errors.budgetBreakdown ? 'error' : ''} help={errors.budgetBreakdown}>
-                  <Input
-                    name="cost"
-                    value={item.cost}
-                    onChange={(e) => handleBudgetChange(index, e)}
-                    placeholder="Enter cost"
-                    type="number"
-                  />
-                </Form.Item>
-                <Button type="link" danger onClick={() => handleRemoveBudgetItem(index)}>
-                  Remove
-                </Button>
-              </div>
-            ))}
-          </div>
-        )}
-        {currentStep === 2 && (
-          <div className="step-content">
-            <Form.Item label="Upload Documents">
-              <Upload
-                fileList={formData.documents}
-                onChange={handleFileChange}
-                beforeUpload={() => false}
-                multiple
-              >
-                <Button icon={<UploadOutlined />}>Upload (max 5 files)</Button>
-              </Upload>
-            </Form.Item>
-            <Form.Item label="Supervisor's Name">
-              <Input
-                name="supervisor"
-                value={formData.supervisor}
-                onChange={handleChange}
-                placeholder="Enter supervisor's name"
-              />
-            </Form.Item>
-            <Form.Item label="Additional Comments">
-              <TextArea
-                name="comments"
-                value={formData.comments}
-                onChange={handleChange}
-                placeholder="Any additional comments or details"
-              />
-            </Form.Item>
-          </div>
-        )}
-
-        <div className="form-actions">
-          <Button type="default" onClick={prevStep} disabled={currentStep === 0}>
-            Previous
-          </Button>
-          {currentStep < 2 && (
-            <Button type="primary" onClick={nextStep} loading={isSaving}>
-              Next
-            </Button>
-          )}
-          {currentStep === 2 && (
-            <Button type="primary" htmlType="submit" loading={isSaving}>
-              Submit
-            </Button>
-          )}
-          {currentStep === 2 && (
-            <Button type="default" onClick={saveForLater} loading={isSaving}>
-              Save for Later
-            </Button>
-          )}
-        </div>
-      </Form>
-
-      <div className="past-records">
-        <Typography.Title level={2}>Past Fund Requests</Typography.Title>
-        <ul>
-          {pastRecords.map((record, index) => (
-            <li key={index}>
-              {record.requesterName} - {record.amount} - {moment(record.dateRequiredBy).format('YYYY-MM-DD')}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
+    return {
+        values,
+        errors,
+        isSubmitting,
+        handleChange,
+        handleAddItem,
+        handleRemoveItem,
+        handleItemChange,
+        handleSubmit,
+    };
 };
 
-export default FundRequestPage;
+// Validation function
+const validate = (values) => {
+    const errors = {};
+    if (!values.amount) errors.amount = 'Amount is required';
+    if (values.amount <= 0) errors.amount = 'Amount must be greater than 0';
+    if (!values.reason) errors.reason = 'Reason is required';
+    if (!values.date) errors.date = 'Date is required';
+    return errors;
+};
+
+const departments = [
+    'Administrative Department',
+    'Logistics Department',
+    'Training Department',
+    'Operations Department',
+    'Engineering Department',
+];
+
+const CRPFFundRequestPage = () => {
+    const { values, errors, isSubmitting, handleChange, handleAddItem, handleRemoveItem, handleItemChange, handleSubmit } = useForm({
+        amount: '',
+        reason: '',
+        date: '',
+        requesterName: '',
+        requesterId: '',
+        department: '',
+        requestPurpose: '',
+        items: [{ name: '', quantity: 1, unitPrice: '' }]
+    }, validate);
+
+    return (
+        <div className="crpf-container">
+            <h1>CRPF Fund Request Form</h1>
+            <form onSubmit={handleSubmit} className="crpf-form">
+                <div className="form-group">
+                    <label>Amount (₹):</label>
+                    <input
+                        type="number"
+                        name="amount"
+                        value={values.amount}
+                        onChange={handleChange}
+                        required
+                    />
+                    {errors.amount && <span className="error">{errors.amount}</span>}
+                </div>
+                <div className="form-group">
+                    <label>Reason:</label>
+                    <textarea
+                        name="reason"
+                        value={values.reason}
+                        onChange={handleChange}
+                        required
+                    ></textarea>
+                    {errors.reason && <span className="error">{errors.reason}</span>}
+                </div>
+                <div className="form-group">
+                    <label>Date:</label>
+                    <input
+                        type="date"
+                        name="date"
+                        value={values.date}
+                        onChange={handleChange}
+                        required
+                    />
+                    {errors.date && <span className="error">{errors.date}</span>}
+                </div>
+                <div className="form-group">
+                    <label>Requester Name:</label>
+                    <input
+                        type="text"
+                        name="requesterName"
+                        value={values.requesterName}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Requester ID:</label>
+                    <input
+                        type="text"
+                        name="requesterId"
+                        value={values.requesterId}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Department:</label>
+                    <select
+                        name="department"
+                        value={values.department}
+                        onChange={handleChange}
+                        required
+                    >
+                        <option value="">Select Department</option>
+                        {departments.map((dept, index) => (
+                            <option key={index} value={dept}>
+                                {dept}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label>Request Purpose:</label>
+                    <input
+                        type="text"
+                        name="requestPurpose"
+                        value={values.requestPurpose}
+                        onChange={handleChange}
+                        required
+                        placeholder="e.g., Departmental needs, Personal needs"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Items:</label>
+                    {values.items.map((item, index) => (
+                        <div key={index} className="item-group">
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Item Name"
+                                value={item.name}
+                                onChange={(e) => handleItemChange(index, e)}
+                                required
+                            />
+                            <input
+                                type="number"
+                                name="quantity"
+                                placeholder="Quantity"
+                                value={item.quantity}
+                                onChange={(e) => handleItemChange(index, e)}
+                                required
+                            />
+                            <input
+                                type="number"
+                                name="unitPrice"
+                                placeholder="Unit Price (₹)"
+                                value={item.unitPrice}
+                                onChange={(e) => handleItemChange(index, e)}
+                                required
+                            />
+                            <button type="button" onClick={() => handleRemoveItem(index)}>Remove Item</button>
+                        </div>
+                    ))}
+                    <button type="button" onClick={handleAddItem}>Add Another Item</button>
+                </div>
+                <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                    {isSubmitting ? 'Submitting...' : 'Submit Request'}
+                </button>
+            </form>
+        </div>
+    );
+};
+
+export default CRPFFundRequestPage;

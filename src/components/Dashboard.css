@@ -1,82 +1,365 @@
-
-.dashboard-container {
-  padding: 1rem;
-  margin-top: 50px;
-  margin-left: 40px;
-  min-height: 100vh;
-  background-color: #f4f4f4;
-}
-
-h1 {
-  text-align: center;
-  color: #007bff;
-  margin-bottom: 1rem;
-}
-
-.dashboard-overview {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.overview-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  padding: 1rem;
-  flex: 1 1 300px; 
-  text-align: center;
-}
-
-.overview-card h3 {
-  margin: 0 0 0.5rem;
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f3f6fa;
   color: #333;
 }
 
-.overview-card p {
+.dashboard-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 10px;
+  margin-left: 70px;
+}
+
+/* Header */
+.header {
+  background-color: #1a3558;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.header .logo-title {
+  display: flex;
+  align-items: center;
+}
+
+.header .logo-title img {
+  height: 60px;
+  margin-right: 20px;
+}
+
+.header .user-profile {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.header .user-profile .profile-pic {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+  border: 3px solid #fff;
+}
+
+.header .user-profile .dropdown-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.header .user-profile .dropdown-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.header .user-profile .dropdown-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #fff;
+  color: #333;
+  border-radius: 8px;
+  display: none;
+  padding: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  min-width: 150px;
+}
+
+.header .user-profile:hover .dropdown-menu {
+  display: block;
+}
+
+.header .notification-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 15px;
+  transition: color 0.3s ease;
+}
+
+.header .notification-btn:hover {
+  color: #ffc107;
+}
+
+/* H2 Styles */
+/* h2 {
+  font-size: 1.8rem;
+  color: #1a3558;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-left: 5px solid #1a3558;
+  padding-left: 15px;
+  text-transform: uppercase;
+} */
+
+/* Statistics Cards */
+.stats-cards {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  gap: 20px;
+}
+
+.stats-cards .card {
+  background-color: #007bff;
+  color: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  flex: 1;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.stats-cards .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(21, 19, 19, 0.3);
+}
+
+.card-icon {
+  position: absolute;
+  top: 70px;
+  right: 230px;
   font-size: 2rem;
-  margin: 0;
-  color: #007bff;
+  opacity: 0.9;
 }
 
-@media (max-width: 768px) {
-  .dashboard-container {
-    padding: 0.5rem;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  .overview-card {
-    flex: 1 1 100%;
-    padding: 0.5rem;
-  }
-
-  .overview-card h3 {
-    font-size: 1.2rem;
-  }
-
-  .overview-card p {
-    font-size: 1.5rem;
-  }
+.stats-cards .card h2 {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  font-weight: 700;
 }
 
-@media (max-width: 480px) {
-  .dashboard-container {
-    padding: 0.25rem;
-  }
+.stats-cards .card:nth-child(1) h2 {
+  color: #ff5722; /* Deep Orange for Personnel Deployed */
+}
 
-  h1 {
-    font-size: 1.2rem;
-  }
+.stats-cards .card:nth-child(2) h2 {
+  color: #00ffb7; /* Green for Active Operations */
+}
 
-  .overview-card h3 {
-    font-size: 1rem;
-  }
+.stats-cards .card:nth-child(3) h2 {
+  color: #36ff2f; /* Blue for Incident Reports */
+}
 
-  .overview-card p {
-    font-size: 1.2rem;
-  }
+.stats-cards .card:nth-child(4) h2 {
+  color: #ff9800; /* Orange for Equipment Status */
+}
+
+/* Recent Activities & Alerts */
+.recent-activities {
+  display: flex;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.recent-activities .activities, .recent-activities .alerts {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.recent-activities .activities:hover, .recent-activities .alerts:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.activities, .alerts {
+  flex: 1;
+}
+
+.activities ul, .alerts ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.activities ul li, .alerts ul li {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  position: relative;
+  padding-left: 25px;
+}
+
+.activity-dot, .alert-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #007bff;
+}
+
+.alert-dot {
+  background-color: #dc3545;
+}
+
+/* Operations Map */
+.operations-map {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+}
+
+.map-placeholder {
+  background-color: #e0e0e0;
+  height: 250px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 250px;
+  color: #666;
+  font-size: 1.4rem;
+}
+
+/* Quick Actions */
+.quick-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.action-btn {
+  flex: 1;
+  background-color: #28a745;
+  color: #fff;
+  padding: 18px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.action-btn:hover {
+  background-color: #218838;
+  transform: translateY(-5px);
+}
+
+/* Upcoming Events */
+.upcoming-events {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.upcoming-events ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.upcoming-events ul li {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  position: relative;
+  padding-left: 25px;
+}
+
+.event-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #007bff;
+}
+
+/* Footer */
+.footer {
+  background-color: #1a3558;
+  color: #fff;
+  padding: 25px;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.footer a {
+  color: #ffc107;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+
+.stats-cards .card p {
+  font-size: 1.5rem; /* Adjust the size according to preference */
+  font-weight: 700;
+  color: #ffffff;
+  margin: 15px 0 0;
+  text-align: center;
+  line-height: 1;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+/* Specific color schemes for each card type */
+.stats-cards .card:nth-child(1) p {
+  color: #ffca28; /* Vibrant Orange for Personnel Deployed */
+}
+
+.stats-cards .card:nth-child(2) p {
+  color: #ffca28; /* Fresh Green for Active Operations */
+}
+
+.stats-cards .card:nth-child(3) p {
+  color: #ffca28; /* Sky Blue for Incident Reports */
+}
+
+.stats-cards .card:nth-child(4) p {
+  color: #ffca28; /* Bright Yellow for Equipment Status */
+}
+
+/* Hover effect */
+.stats-cards .card:hover p {
+  color: #ffffff;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center; 
+  gap: 10px;
+}
+
+.logo-title h1{
+  font-size: 2.6rem; /* Adjust font size */
+  color: #EACE31; /* Set text color */
+  margin-left: 10px; /* Remove default margin */
+  font-family: 'Arial', sans-serif; /* Set font family */
+  font-weight: bold; /* Set font weight */
+  
+}
+
+.logo-title img {
+  width: 50px; /* Adjust the logo size */
+  height: auto; /* Maintain aspect ratio */
 }

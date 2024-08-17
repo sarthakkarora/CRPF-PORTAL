@@ -192,7 +192,7 @@ export const missions = [
       supportTeams: 'Security Detail Bravo',
       documentation: 'Security Logs',
       environmentalConsiderations: 'Urban Infrastructure',
-      status: 'on hold' // Added status
+      status: 'hold' // Added status
     },
     {
       id: 6,
@@ -387,7 +387,7 @@ export const missions = [
         supportTeams: 'Conservation Support Team',
         documentation: 'Anti-Poaching Reports',
         environmentalConsiderations: 'Dense Forest',
-        status: 'on hold'
+        status: 'hold'
       },
       {
         id: 11,
@@ -543,7 +543,7 @@ export const missions = [
         supportTeams: 'Anti-Smuggling Unit',
         documentation: 'Inspection Logs',
         environmentalConsiderations: 'Rural Terrain',
-        status: 'on hold'
+        status: 'hold'
       },
       {
         id: 15,
@@ -699,7 +699,7 @@ export const missions = [
         supportTeams: 'Anti-Trafficking Unit',
         documentation: 'Trafficking Reports',
         environmentalConsiderations: 'Diverse Terrain',
-        status: 'on hold'
+        status: 'hold'
       },
       {
         id: 19,
@@ -777,7 +777,7 @@ export const missions = [
         supportTeams: 'Border Security Forces',
         documentation: 'Monitoring Logs',
         environmentalConsiderations: 'Extreme Heat',
-        status: 'on hold'
+        status: 'hold'
       }
   ];
   

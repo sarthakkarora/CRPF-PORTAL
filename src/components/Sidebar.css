@@ -4,7 +4,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  background: #2c3e50;
+  background: #1B3558;
   color: #ecf0f1;
   transition: width 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   padding: 20px;
-  background: #34495e;
+  background: #2a5389;
 }
 
 .toggle-btn {
@@ -97,7 +97,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: #34495e;
+  background: #2a5389;
   padding: 10px 20px;
   border-top: 1px solid #2c3e50;
 }
