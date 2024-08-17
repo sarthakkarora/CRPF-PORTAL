@@ -16,6 +16,7 @@ import {
   FaTruck,
   FaClipboardList
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import './Sidebar.css';
 
 const Sidebar = () => {
@@ -48,7 +49,7 @@ const Sidebar = () => {
   }, [collapsed]);
 
   useEffect(() => {
-    const content = document.querySelector('.content');
+    const content = document.querySelector('.main-content');
     if (collapsed) {
       document.querySelector('.sidebar-container').classList.remove('expanded');
       document.querySelector('.sidebar-container').classList.add('collapsed');
@@ -56,7 +57,7 @@ const Sidebar = () => {
     } else {
       document.querySelector('.sidebar-container').classList.remove('collapsed');
       document.querySelector('.sidebar-container').classList.add('expanded');
-      content.style.marginLeft = '180px'; 
+      content.style.marginLeft = '180px';
     }
   }, [collapsed]);
 
@@ -69,49 +70,49 @@ const Sidebar = () => {
         {!collapsed && <div className="sidebar-title">CRPF Panel</div>}
       </div>
       <div className="sidebar-links">
-        <a href="http://localhost:5001/dashboard" className="sidebar-link" aria-label="Dashboard">
+        <Link to="/dashboard" className="sidebar-link" aria-label="Dashboard">
           <FaTachometerAlt className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Dashboard</span>}
-        </a>
-        <a href="http://localhost:5001/mission-profile" className="sidebar-link" aria-label="Mission Profile">
+        </Link>
+        <Link to="/mission-profile" className="sidebar-link" aria-label="Mission Profile">
           <FaClipboardList className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Mission Profile</span>}
-        </a>
-        <a href="http://localhost:5001/indent" className="sidebar-link" aria-label="Indent Resource/Equipment">
+        </Link>
+        <Link to="/indent" className="sidebar-link" aria-label="Indent Resource/Equipment">
           <FaTruck className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Indent Resource/Equipment</span>}
-        </a>
-        <a href="http://localhost:5001/medical" className="sidebar-link" aria-label="Medical Support">
+        </Link>
+        <Link to="/medical" className="sidebar-link" aria-label="Medical Support">
           <FaMedkit className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Medical Support</span>}
-        </a>
-        <a href="http://localhost:5001/chat" className="sidebar-link" aria-label="Chat">
+        </Link>
+        <Link to="/chat" className="sidebar-link" aria-label="Chat">
           <FaComments className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Field Chat</span>}
-        </a>
-        <a href="http://localhost:5001/fund-request" className="sidebar-link" aria-label="Fund Request">
+        </Link>
+        <Link to="/fund-request" className="sidebar-link" aria-label="Fund Request">
           <FaHandHoldingUsd className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Fund Request</span>}
-        </a>
-        <a href="http://localhost:5001/personnel" className="sidebar-link" aria-label="Personnel">
+        </Link>
+        <Link to="/personnel" className="sidebar-link" aria-label="Personnel">
           <FaUsers className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Personnel Management</span>}
-        </a>
-        <a href="http://localhost:5001/inventory" className="sidebar-link" aria-label="Inventory">
+        </Link>
+        <Link to="/inventory" className="sidebar-link" aria-label="Inventory">
           <FaBox className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Inventory Management</span>}
-        </a>
-        <a href="http://localhost:5001/reports" className="sidebar-link" aria-label="Reports">
+        </Link>
+        <Link to="/reports" className="sidebar-link" aria-label="Reports">
           <FaFileAlt className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Reports</span>}
-        </a>
-        <a href="http://localhost:5001/alerts" className="sidebar-link" aria-label="Alerts">
+        </Link>
+        <Link to="/alerts" className="sidebar-link" aria-label="Alerts">
           <FaBell className="sidebar-icon" />
           {!collapsed && <span className="sidebar-text">Alerts</span>}
           {notifications > 0 && (
             <span className="notification-badge" aria-label="New Notifications">{notifications}</span>
           )}
-        </a>
+        </Link>
       </div>
       <div className="sidebar-footer">
         <div className="profile-section" onClick={() => setShowDropdown(!showDropdown)} aria-label="Profile">
@@ -128,9 +129,9 @@ const Sidebar = () => {
           )}
           {showDropdown && (
             <div className="dropdown-menu">
-              <a href="#" className="dropdown-item" aria-label="Profile"><FaUserCircle /> Profile</a>
-              <a href="#" className="dropdown-item" aria-label="Settings"><FaCog /> Settings</a>
-              <a href="#" className="dropdown-item" aria-label="Logout"><FaSignOutAlt /> Logout</a>
+              <Link to="#" className="dropdown-item" aria-label="Profile"><FaUserCircle /> Profile</Link>
+              <Link to="#" className="dropdown-item" aria-label="Settings"><FaCog /> Settings</Link>
+              <Link to="#" className="dropdown-item" aria-label="Logout"><FaSignOutAlt /> Logout</Link>
             </div>
           )}
         </div>

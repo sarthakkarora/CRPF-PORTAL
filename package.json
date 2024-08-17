@@ -1,7 +1,7 @@
 {
   "name": "react-admin",
   "version": "0.1.0",
-  "homepage": "https://sarthakkarora.github.io/dashboard",
+  "homepage": "https://sarthakkarora.github.io/CRPF-ADMIN-PAGE",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",
