@@ -30,10 +30,14 @@ const Dashboard = () => {
     <div className="dashboard-container">
       {/* Header */}
       <header className="header">
-        <div className="logo-title">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/CRPF_Logo.svg" alt="CRPF Logo" />
-          <h1>CRPF Dashboard</h1>
-        </div>
+      <a href="https://crpf.gov.in" className="logo-title" target="_blank" rel="noopener noreferrer">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/f/f9/CRPF_Logo.svg"
+    alt="CRPF Logo"
+  />
+  <h1>CRPF Dashboard</h1>
+</a>
+
         <div className="user-profile">
           
           <span>Welcome, Major Shreejesh</span>
@@ -41,7 +45,7 @@ const Dashboard = () => {
           </div>
           <button 
   className="notification-btn" 
-  onClick={() => window.location.href = 'http://localhost:5001/alerts'}
+  onClick={() => window.location.href = '/alerts'}
 >
   🔔
 </button>
@@ -99,34 +103,40 @@ const Dashboard = () => {
         <OperationsMap />
       </div>
 
-      {/* Quick Actions */}
+      {/* Enhanced Quick Actions */}
       <div className="quick-actions">
-      <button 
-  className="action-btn" 
-  onClick={() => window.location.href = 'http://localhost:5001/reports'}
->
-  ➕ Add Incident Report
-</button>
-<button 
-  className="action-btn" 
-  onClick={() => window.location.href = 'http://localhost:5001/medical'}
->
-  📅 Medical Support
-</button>
-<button 
-  className="action-btn" 
-  onClick={() => window.location.href = 'http://localhost:5001/indent'}
->
-  📦 Request Equipment
-</button>
-
-<button 
-  className="action-btn" 
-  onClick={() => window.location.href = 'http://localhost:5001/reports'}
->
-  📄 View All Reports
-</button>
-
+        <button 
+          className="action-btn primary" 
+          onClick={() => window.location.href = '/reports'}
+        >
+          <span className="action-icon">➕</span>
+          <span className="action-text">Add Incident Report</span>
+         
+        </button>
+        <button 
+          className="action-btn secondary" 
+          onClick={() => window.location.href = '/medical'}
+        >
+          <span className="action-icon">🏥</span>
+          <span className="action-text">Medical Support</span>
+       
+        </button>
+        <button 
+          className="action-btn tertiary" 
+          onClick={() => window.location.href = '/inventory'}
+        >
+          <span className="action-icon">📦</span>
+          <span className="action-text">Request Equipment</span>
+        
+        </button>
+        <button 
+          className="action-btn quaternary" 
+          onClick={() => window.location.href = '/reports'}
+        >
+          <span className="action-icon">📄</span>
+          <span className="action-text">View All Reports</span>
+       
+        </button>
       </div>
 
       {/* Upcoming Events */}
@@ -141,10 +151,56 @@ const Dashboard = () => {
 
       {/* Footer */}
       <footer className="footer">
-        <p>CRPF Headquarters, New Delhi, India</p>
-        <p>Contact: +91 1122334455 | Emergency: 100</p>
-        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
-      </footer>
+  <div className="footer-content">
+    {/* CRPF Headquarters Section */}
+    <div className="footer-section">
+      <h4>CRPF Headquarters</h4>
+      <div className="contact-info">
+        <p>New Delhi, India</p>
+        <p>Contact: +91 1122334455</p>
+        <p>Emergency: 100</p>
+        <p>Email: <a href="mailto:headquarters@crpf.gov.in">headquarters@crpf.gov.in</a></p>
+      </div>
+    </div>
+
+    {/* Quick Links Section */}
+    <div className="footer-section">
+      <h4>Quick Links</h4>
+      <div className="footer-links">
+        <a href="https://crpf.gov.in/">About Us</a>
+        <a href="https://crpf.gov.in/E-Service-Book">Services</a>
+        <a href="https://crpf.gov.in/welfare-Activities">Resources</a>
+        <a href="https://crpf.gov.in/Contact-Us/Helpline-Numbers">Help Center</a>
+        <a href="https://crpf.gov.in/Privacy-Policy">Privacy Policy</a>
+        <a href="https://crpf.gov.in/Terms-&-Conditions">Terms of Service</a>
+      </div>
+    </div>
+
+    {/* Related Services Section */}
+    <div className="footer-section">
+      <h4>Related Services</h4>
+      <div className="footer-links">
+        <a href="https://www.india.gov.in/">National Portal of India</a>
+        <a href="https://www.mha.gov.in/">Ministry of Home Affairs</a>
+        <a href="https://pgportal.gov.in/">Public Grievances Portal</a>
+        <a href="https://www.nidm.gov.in/">Disaster Management (NIDM)</a>
+        <a href="https://digitalindia.gov.in/">Digital India Initiative</a>
+      </div>
+    </div>
+  </div>
+
+  {/* Bottom Section */}
+  <div className="footer-bottom">
+    <p>© 2024 CRPF. All rights reserved.</p>
+    <div className="footer-bottom-links">
+      <a href="https://crpf.gov.in/Sitemap">Sitemap</a>
+      <a href="https://crpf.gov.in/Accessibility-Statement">Accessibility</a>
+      <a href="https://crpf.gov.in/Feedback">Feedback</a>
+    </div>
+  </div>
+</footer>
+
+
     </div>
   );
 };
