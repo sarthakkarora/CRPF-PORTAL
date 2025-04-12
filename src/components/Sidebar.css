@@ -9,6 +9,7 @@
   transition: width 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
   z-index: 1000;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
 }
 
 .sidebar-container.collapsed {
@@ -20,6 +21,7 @@
   align-items: center;
   padding: 20px;
   background: #2a5389;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .toggle-btn {
@@ -34,6 +36,7 @@
   font-size: 1.2rem;
   margin-left: 10px;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 .sidebar-search {
@@ -41,19 +44,22 @@
   align-items: center;
   padding: 10px 20px;
   background: #34495e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .search-input {
   flex: 1;
-  padding: 5px;
+  padding: 6px 10px;
   border: none;
   border-radius: 4px;
   outline: none;
+  font-size: 0.9rem;
 }
 
 .search-icon {
   margin-left: 10px;
   color: #ecf0f1;
+  font-size: 1.1rem;
 }
 
 .sidebar-nav {
@@ -68,20 +74,31 @@
   color: #ecf0f1;
   text-decoration: none;
   font-size: 1rem;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, padding 0.3s ease;
+  white-space: nowrap;
+  position: relative;
 }
 
-.sidebar-link:hover {
+.sidebar-link:hover,
+.sidebar-link.active {
   background: #16a085;
 }
 
 .sidebar-icon {
   font-size: 1.2rem;
+  min-width: 24px;
 }
 
 .sidebar-text {
   margin-left: 10px;
   font-weight: bold;
+  overflow: hidden;
+  transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.sidebar-container.collapsed .sidebar-text {
+  opacity: 0;
+  width: 0;
 }
 
 .notification-badge {
@@ -89,7 +106,7 @@
   color: white;
   border-radius: 12px;
   padding: 2px 8px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   margin-left: auto;
 }
 
@@ -100,12 +117,19 @@
   background: #2a5389;
   padding: 10px 20px;
   border-top: 1px solid #2c3e50;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.sidebar-footer:hover {
+  background: #1f436b;
 }
 
 .profile-section {
   display: flex;
   align-items: center;
-  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
 }
 
 .profile-picture {
@@ -113,10 +137,18 @@
   height: 40px;
   border-radius: 50%;
   margin-right: 10px;
+  object-fit: cover;
 }
 
 .profile-text {
   font-weight: bold;
+  overflow: hidden;
+  transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.sidebar-container.collapsed .profile-text {
+  opacity: 0;
+  width: 0;
 }
 
 .dropdown-menu {
@@ -124,45 +156,74 @@
   bottom: 60px;
   background: #2c3e50;
   width: 100%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 2000;
+}
+
+.sidebar-footer .dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .dropdown-item {
   display: flex;
   align-items: center;
-  padding: 10px 20px;
+  padding: 12px 20px;
   color: #ecf0f1;
   text-decoration: none;
   font-size: 0.9rem;
+  gap: 10px;
+  transition: background-color 0.2s;
 }
 
 .dropdown-item:hover {
   background: #16a085;
 }
 
+.dropdown-arrow {
+  margin-left: auto;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
 
+.dropdown-arrow.rotate {
+  transform: rotate(180deg);
+}
+
+/* Main content adjustment based on sidebar width */
 .content-container {
   transition: margin-left 0.3s ease; 
   padding: 20px;
   background-color: #f5f5f5;
+  margin-left: 250px;
+}
+
+.sidebar-container.collapsed ~ .content-container {
   margin-left: 80px;
 }
 
-.sidebar-container.expanded ~ .content-container {
-  margin-left: 250px; 
-}
-.sidebar {
-  width: 250px;
-  transition: transform 0.3s ease;
-  transform: translateX(-250px); 
-}
+/* Optional: responsive support */
+@media screen and (max-width: 768px) {
+  .sidebar-container {
+    width: 200px;
+  }
 
-.sidebar.open {
-  transform: translateX(0);
-}
+  .sidebar-container.collapsed {
+    width: 70px;
+  }
 
-.content {
-  transition: margin-left 0.3s ease;
-  margin-left: px; 
+  .content-container {
+    margin-left: 200px;
+  }
+
+  .sidebar-container.collapsed ~ .content-container {
+    margin-left: 70px;
+  }
 }
