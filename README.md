@@ -120,7 +120,7 @@ https://drive.google.com/file/d/1imhhU6YtCO_Ckkg4ERgbFahqwa06fiPt/view?usp=shari
 
 2. **Install Dependencies:**
    ```bash
-   cd crpf-admin-portal
+   
    npm install
    ```
 
